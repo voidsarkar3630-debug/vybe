@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>VYBE — you have 43 things in that closet</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,800&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F4C6D2;--ink:#1a1a1a;--green:#1F6B3A;--tag:#F3D84A;--paper:#FBF3F4;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#2a1a1f;--ink:#f6dfe5;--green:#6fd08f;--tag:#c9ad1c;--paper:#3a2429}}
+:root[data-theme="dark"]{--bg:#2a1a1f;--ink:#f6dfe5;--green:#6fd08f;--tag:#c9ad1c;--paper:#3a2429}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Bricolage Grotesque',Helvetica,Arial,sans-serif;overflow-x:hidden;line-height:1.45}
+.note{font-family:'Caveat','Comic Sans MS',cursive;font-weight:600;color:var(--green)}
+button,input{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--green);outline-offset:3px}
+
+/* HERO: the mess */
+.hero{position:relative;min-height:100svh;padding:7vh 5vw 4vh;overflow:hidden}
+.logo{font-weight:800;font-size:1.6rem;letter-spacing:-.04em;position:relative;z-index:3}
+.hero h1{position:relative;z-index:2;margin:6vh 0 0;font-weight:800;font-size:clamp(3.4rem,15.5vw,14rem);line-height:.82;letter-spacing:-.06em;text-transform:uppercase;max-width:11ch}
+.hero h1 span{display:block;transition:transform .8s cubic-bezier(.2,.9,.3,1)}
+.hero h1 span:nth-child(2){margin-left:.35em}
+.hero h1 span:nth-child(3){margin-left:-.05em;font-size:.62em;margin-top:.12em}
+.tidy h1 span{transform:none}
+.aside{position:absolute;z-index:3;right:6vw;top:34vh;transform:rotate(-6deg);font-size:clamp(1.3rem,3vw,2rem);max-width:12ch;line-height:1}
+.aside:after{content:"";position:absolute;left:-2.2rem;bottom:-.6rem;width:2rem;height:1.2rem;border-bottom:3px solid var(--green);border-left:3px solid var(--green);border-radius:0 0 0 100%;transform:rotate(20deg)}
+.go{position:absolute;z-index:4;right:6vw;top:56vh;background:var(--ink);color:var(--bg);border:0;padding:1rem 1.7rem;font-weight:800;font-size:1.5rem;letter-spacing:-.03em;cursor:pointer;transform:rotate(2deg);transition:transform .2s}
+.go:hover{transform:rotate(-2deg) scale(1.06)}
+.tag{position:absolute;z-index:1;left:var(--x);top:var(--y);transform:rotate(var(--r));background:var(--tag);color:#1a1a1a;padding:.45rem .8rem .45rem 1.3rem;font-size:clamp(.75rem,1.6vw,1rem);clip-path:polygon(.7rem 0,100% 0,100% 100%,.7rem 100%,0 50%);white-space:nowrap;transition:left .9s cubic-bezier(.3,1.3,.4,1),top .9s cubic-bezier(.3,1.3,.4,1),transform .9s cubic-bezier(.3,1.3,.4,1),background .5s;transition-delay:calc(var(--i)*60ms)}
+.tidy .tag{left:var(--tx);top:var(--ty);transform:rotate(0);background:var(--paper)}
+.tag:hover{transform:rotate(calc(var(--r)*-1)) scale(1.1)}
+.tidy .tag:hover{transform:translateY(-4px)}
+.tagrow-label{position:absolute;left:5vw;top:calc(100% - 14.5vh);font-size:1.6rem;opacity:0;transition:opacity .6s .9s}
+.tidy .tagrow-label{opacity:1}
+
+/* GOLD 3D TITLE */
+.hero{perspective:900px}
+.hero h1{color:#E2B53C;transform-style:preserve-3d;transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .25s ease-out;animation:bob 5s ease-in-out 1.4s infinite;
+text-shadow:1px 1px 0 #f7dd8a,2px 2px 0 #b8892a,3px 3px 0 #a67a22,4px 4px 0 #946b1c,5px 5px 0 #835e17,6px 6px 0 #6f4f12,7px 7px 0 #5e420f,8px 8px 0 #4d360c,12px 16px 18px rgba(60,35,5,.45)}
+.hero h1 span{transform-origin:50% 100%;animation:flip .9s cubic-bezier(.2,.9,.3,1) backwards}
+.hero h1 span:nth-child(2){animation-delay:.15s}
+.hero h1 span:nth-child(3){animation-delay:.3s}
+@keyframes flip{from{opacity:0;transform:rotateX(-90deg) translateY(40px)}to{opacity:1;transform:none}}
+@keyframes bob{50%{translate:0 -10px}}
+@media (prefers-reduced-motion:reduce){.hero h1{animation:none}.hero h1 span{animation:none}}
+
+/* STATEMENT: asymmetric */
+.say{display:grid;grid-template-columns:1fr 2fr;gap:4vw;padding:14vh 5vw 8vh;align-items:start}
+.say .big{font-size:clamp(5rem,20vw,16rem);font-weight:800;line-height:.7;letter-spacing:-.08em;color:var(--green);margin:0;transform:translateX(-.08em)}
+.say p.lead{font-size:clamp(1.6rem,4vw,3.2rem);line-height:1.05;letter-spacing:-.03em;font-weight:800;margin:0 0 3rem;max-width:18ch}
+.steps{display:flex;flex-direction:column;gap:1.6rem;max-width:34rem}
+.steps div:nth-child(2){margin-left:3rem}
+.steps div:nth-child(3){margin-left:1rem}
+.steps b{font-size:1.25rem;letter-spacing:-.02em}
+.steps .note{display:block;font-size:1.5rem;line-height:1;transform:rotate(-2deg)}
+
+/* WARDROBE TOGGLE */
+.fit{background:var(--ink);color:var(--bg);margin:6vh 0 0;padding:10vh 5vw 12vh;position:relative}
+.fit h2{font-size:clamp(2.2rem,7vw,6rem);line-height:.9;letter-spacing:-.05em;margin:0 0 2rem;max-width:12ch}
+.where{display:flex;flex-wrap:wrap;gap:.5rem 1.4rem;margin-bottom:3rem}
+.where button{background:none;border:0;border-bottom:3px solid transparent;font-size:clamp(1.2rem,3vw,1.8rem);font-weight:800;letter-spacing:-.03em;cursor:pointer;padding:.1rem 0;color:inherit;opacity:.55}
+.where button[aria-pressed="true"]{opacity:1;border-color:var(--tag)}
+.out{display:flex;flex-wrap:wrap;gap:1rem 2.5rem;align-items:baseline;font-size:clamp(1.4rem,4.4vw,3.4rem);font-weight:800;letter-spacing:-.04em;line-height:1}
+.out span:nth-child(2){transform:translateY(.4em) rotate(1.5deg)}
+.out span:nth-child(3){font-style:italic;font-weight:400}
+.out+.note{display:block;margin-top:2.5rem;font-size:1.7rem;color:var(--tag);transform:rotate(-1.5deg)}
+
+/* WAITLIST */
+.join{padding:14vh 5vw 10vh;position:relative}
+.join h2{font-size:clamp(3rem,13vw,11rem);line-height:.8;letter-spacing:-.07em;margin:0 0 3rem;font-weight:800}
+.join h2 em{font-style:normal;margin-left:1.2em;display:inline-block;transform:rotate(-3deg)}
+.join .row{display:flex;flex-wrap:wrap;gap:.8rem;max-width:36rem}
+.join input{flex:1 1 14rem;background:transparent;border:0;border-bottom:3px solid var(--ink);padding:.9rem .2rem;font-size:1.3rem;min-width:0}
+.join input::placeholder{color:inherit;opacity:.5}
+.join .go2{background:var(--green);color:var(--bg);border:0;padding:1rem 1.6rem;font-weight:800;font-size:1.3rem;cursor:pointer}
+:root:not([data-theme="dark"]) .join .go2{color:#fff}
+.msg{min-height:2.2rem;margin-top:1rem;font-size:1.8rem}
+footer{padding:2rem 5vw 3rem;font-size:.9rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+@media (max-width:700px){.say{grid-template-columns:1fr}.say .big{font-size:9rem}.aside{top:auto;bottom:30vh}.go{top:auto;bottom:22vh}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header class="hero" id="hero">
+  <div class="logo">vybe</div>
+  <h1 id="h1"><span>I have</span><span>nothing</span><span>to wear.</span></h1>
+  <div class="aside note" id="aside">you have 43 things in that closet btw.</div>
+  <button class="go" id="go">VYBE →</button>
+
+  <span class="tag" style="--i:0;--x:48%;--y:8%;--r:-8deg;--tx:5%;--ty:80%">the jeans that almost fit</span>
+  <span class="tag" style="--i:1;--x:70%;--y:20%;--r:6deg;--tx:36%;--ty:80%">worn once, 2022</span>
+  <span class="tag" style="--i:2;--x:8%;--y:62%;--r:-4deg;--tx:62%;--ty:80%">gift. never opened</span>
+  <span class="tag" style="--i:3;--x:55%;--y:70%;--r:10deg;--tx:5%;--ty:88%">black (the other black)</span>
+  <span class="tag" style="--i:4;--x:30%;--y:86%;--r:-12deg;--tx:38%;--ty:88%">tags still on</span>
+  <span class="tag" style="--i:5;--x:78%;--y:80%;--r:3deg;--tx:62%;--ty:88%">for "someday"</span>
+  <span class="tag" style="--i:6;--x:2%;--y:38%;--r:7deg;--tx:80%;--ty:80%">too nice for tuesday</span>
+  <span class="tag" style="--i:7;--x:60%;--y:44%;--r:-5deg;--tx:80%;--ty:88%">shrunk. allegedly</span>
+  <div class="tagrow-label note" id="lbl">all of it, in order.</div>
+</header>
+
+<section class="say">
+  <p class="big" aria-hidden="true">43</p>
+  <div>
+    <p class="lead">It's not that you own nothing. It's that you can't see it.</p>
+    <div class="steps">
+      <div><b>Show VYBE your closet.</b><span class="note">a few photos. be honest, the floor pile counts.</span></div>
+      <div><b>Say where you're going.</b><span class="note">date, interview, "just a vibe."</span></div>
+      <div><b>Wear the outfit.</b><span class="note">made from your clothes. nothing to buy.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="fit">
+  <h2>Where are we going?</h2>
+  <div class="where" id="where">
+    <button aria-pressed="true" data-k="0">First date</button>
+    <button aria-pressed="false" data-k="1">Monday meeting</button>
+    <button aria-pressed="false" data-k="2">Brunch, unironically</button>
+  </div>
+  <div class="out" id="out" aria-live="polite"></div>
+  <span class="note" id="fnote"></span>
+</section>
+
+<section class="join">
+  <h2>Get in<br><em>early.</em></h2>
+  <form class="row" id="f">
+    <input id="em" type="email" required placeholder="your email" aria-label="Email address" autocomplete="email">
+    <button class="go2" type="submit">Join the waitlist</button>
+  </form>
+  <div class="msg note" id="msg" role="status"></div>
+</section>
+<footer><span>vybe, a wardrobe that talks back.</span><span>made by people who own too many black tops.</span></footer>
+
+<script>
+var h=document.getElementById('hero'),h1=document.getElementById('h1'),go=document.getElementById('go'),a=document.getElementById('aside');
+go.addEventListener('click',function(){
+  var t=h.classList.toggle('tidy');
+  h1.innerHTML=t?'<span>Okay.</span><span>Wear</span><span>this.</span>':'<span>I have</span><span>nothing</span><span>to wear.</span>';
+  a.textContent=t?'see? it was in there the whole time.':'you have 43 things in that closet btw.';
+  go.textContent=t?'← mess it up':'VYBE →';
+});
+h.addEventListener('pointermove',function(e){
+  var r=h.getBoundingClientRect();
+  h1.style.setProperty('--ry',(((e.clientX-r.left)/r.width-.5)*22)+'deg');
+  h1.style.setProperty('--rx',(-((e.clientY-r.top)/r.height-.5)*14)+'deg');
+});
+h.addEventListener('pointerleave',function(){h1.style.setProperty('--rx','0deg');h1.style.setProperty('--ry','0deg')});
+var D=[
+ [['the green knit','the straight jeans','your good boots'],'warm, a little effortless. do not mention the knit is from 2019.'],
+ [['the grey blazer','white tee, ironed','loafers'],'looks like you read the agenda. you did not.'],
+ [['linen shirt','the wide trousers','white sneakers'],'ready for a second mimosa and a very long conversation.']
+];
+var out=document.getElementById('out'),fn=document.getElementById('fnote');
+function show(k){
+  out.innerHTML=D[k][0].map(function(x){return '<span>'+x+'</span>'}).join('');
+  fn.textContent=D[k][1];
+}
+document.getElementById('where').addEventListener('click',function(e){
+  var b=e.target.closest('button');if(!b)return;
+  [].forEach.call(this.children,function(c){c.setAttribute('aria-pressed',c===b)});
+  show(+b.dataset.k);
+});
+show(0);
+var msg=document.getElementById('msg');
+document.getElementById('f').addEventListener('submit',function(e){
+  e.preventDefault();
+  msg.textContent="you're on the list. go look at your closet. we'll wait.";
+  this.querySelector('input').value='';
+});
+</script>
+</body>
+</html>
